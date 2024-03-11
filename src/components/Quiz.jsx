@@ -1,6 +1,7 @@
 import {useState} from "react";
 import questions from "../questions.js";
 import quiz from '../assets/quiz-complete.png';
+import {QuestionTimer} from "./QuestionTimer.jsx";
 
 export function Quiz() {
     const [userAnswers, setUserAnswers] = useState([]);
@@ -30,6 +31,7 @@ export function Quiz() {
     return (
         <div id={"quiz"}>
             <div id={"questions"}>
+                <QuestionTimer onTimeout={()=> handleSelectAnswer(null)} timeout={10000} />
                 <h2>{questions[activeQuestionIndex].text}</h2>
                 <ul id={"answers"}>
                     {questions[activeQuestionIndex].answers.map((answer, index) => (
